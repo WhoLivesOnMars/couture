@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver l'objet{% endblock %}
+
+{% block main %}
+    <div class="section-back-link">
+        <a href="{{ path('app_product_show', { id: product.id }) }}" class="back-link">← Retour à l’objet</a>
+    </div>
+
+    <div class="form-container">
+        <h1 class="form-title">Réserver l'objet</h1>
+
+        {{ include('reservation/_form.html.twig', {'form': form, 'button_label': 'Réserver'}) }}
+    </div>
+
+{% endblock %}

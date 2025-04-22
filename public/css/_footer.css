@@ -1,0 +1,82 @@
+.footer {
+    background-color: #e76f51;
+    padding: 2rem 0 1rem;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-left {
+    display: flex;
+}
+
+.footer-right {
+    display: flex;
+    gap: 10rem;
+    padding-right: 5rem;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-right: 2.5rem;
+    border-right: 1px solid #000;
+}
+
+.company-name {
+    font-family: 'Cairo Extrabold', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    text-shadow: 6px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
+.footer-image {
+    height: 10rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding-left: 2.5rem;
+}
+
+.social-link {
+    color: #000;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-nav {
+    padding: 1rem 1rem;
+    border-left: 1px solid #000;
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer-list li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-list a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #264653;
+}

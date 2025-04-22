@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un objet{% endblock %}
+
+{% block main %}
+    <div class="section-back-link">
+        <a href="{{ path('app_admin_reservation') }}" class="back-link">← Retour à la liste des réservations</a>
+    </div>
+
+    <div class="form-container">
+        <h1 class="form-title">Créer un objet</h1>
+
+        {{ include('product/_form.html.twig', {'form': form, 'button_label': 'Enregistrer'}) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,136 @@
+.header {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo__title {
+    font-family: 'Cairo Extrabold', sans-serif;
+    font-size: 12rem;
+    line-height: 1;
+    text-shadow: 6px 7px 4px rgba(0, 0, 0, 0.25);
+    color: #e76f51;
+}
+
+.logo__subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.16em;
+    padding: 1rem;
+    line-height: 1;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 650px;
+    background-image: url(../images/banner.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+
+.secondary-header {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    width: 100%;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo__link {
+    text-decoration: none;
+    font-family: 'Cairo Extrabold', sans-serif;
+    color: var(--background-color);
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.categories-nav {
+    width: 26rem;
+}
+
+.categories-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 12.5rem;
+}
+
+.menu {
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2a9d8f;
+}
+
+.main-nav {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--background-color);
+}
+
+.icon {
+    font-size: 3rem;
+    color: #e9c46a;
+}
+
+.secondary-header__main-nav,
+.secondary-header__user-nav {
+    display: flex;
+}
+
+.secondary-header__main-nav {
+    align-items: center;
+    height: 4rem;
+}
+
+.secondary-header__user-nav {
+    align-items: center;
+    padding-left: 1rem;
+    border-left: 1px solid #fff;
+    padding: 1rem 1rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.secondary-header__link {
+    text-decoration: none;
+    color: var(--background-color);
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.secondary-header__link:hover {
+    text-decoration: underline;
+}

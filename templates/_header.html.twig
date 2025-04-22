@@ -1,0 +1,66 @@
+{# templates/partials/_header.html.twig #}
+{% set is_homepage = app.request.attributes.get('_route') == 'app_home' %}
+
+{% if is_homepage %}
+    <section class="hero">
+        <header class="header">
+            <div class="logo">
+                <h1 class="logo__title">Couture</h1>
+                <span class="logo__subtitle">Tissus, création et passion</span>
+            </div>
+            <nav class="categories-nav">
+            </nav>
+        </header>
+    </section>
+    <div class="menu">
+        <nav class="main-nav">
+            {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_admin_reservation') }}" class="nav-link">Espace administrateur</a>
+                {% elseif is_granted('ROLE_PRO') %}
+                    <a href="{{ path('app_admin_reservation') }}" class="nav-link">Espace professionnel</a>
+                {% elseif is_granted('ROLE_VISITEUR') %}
+                    <a href="{{ path('app_reservation_index') }}" class="nav-link">Espace personnel</a>
+                {% endif %}
+                <a href="{{ path('app_logout') }}" class="nav-link">Se déconnecter</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="nav-link">Se connecter</a>
+            {% endif %}
+            <a href="#" class="nav-link">À propos</a>
+        </nav>
+    </div>
+{% else %}
+    <header class="secondary-header">
+        <div class="header-content">
+            <a href="{{ path('app_home') }}" class="logo__link">Couture</a>
+
+            <nav class="secondary-header__main-nav">
+                <ul class="nav-list">
+                        <li>
+                            <a href="{{ path('app_category_index') }}" class="secondary-header__link">
+                                Catégories
+                            </a>
+                        </li>
+                </ul>
+            </nav>
+
+            <nav class="secondary-header__user-nav">
+                <ul class="nav-list">
+                    {% if app.user %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace administrateur</a>
+                        {% elseif is_granted('ROLE_PRO') %}
+                            <a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace professionnel</a>
+                        {% elseif is_granted('ROLE_VISITEUR') %}
+                            <a href="{{ path('app_reservation_index') }}" class="secondary-header__link">Espace personnel</a>
+                        {% endif %}
+                        <li><a href="{{ path('app_logout') }}" class="secondary-header__link">Se déconnecter</a></li>
+                    {% else %}
+                        <li><a href="{{ path('app_login') }}" class="secondary-header__link">Se connecter</a></li>
+                    {% endif %}
+                    <li><a href="#" class="secondary-header__link">À propos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+{% endif %}

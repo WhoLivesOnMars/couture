@@ -1,0 +1,13 @@
+<div class="section-back-link">
+    <a href="{{ path('app_category_index') }}" class="back-link">← Catégories</a>
+</div>
+
+<div class="section-table">
+    <h1>{{ category.name }}</h1>
+</div>
+
+<div class="subcategory-buttons">
+    {% for sub in subcategories %}
+        <a class="btn btn-sub" href="{{ path('app_subcategory_show', { id: sub.id }) }}">{{ sub.name }}</a>
+    {% endfor %}
+</div>

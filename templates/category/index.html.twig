@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block main %}
+
+    <section class="categories">
+        {% for category in categories %}
+            <div class="category">
+                <h2>{{ category.name }}</h2>
+                <p class="category__description">{{ category.description }}</p>
+                <div class="category__images">
+                    <img src="{{ category.image1Url }}" alt="{{ category.image1Alt }}" class="image-placeholder">
+                    <img src="{{ category.image2Url }}" alt="{{ category.image2Alt }}" class="image-placeholder">
+                </div>
+                <a href="{{ path('app_category_show', {id: category.id}) }}" class="btn category-button">Voir plus</a>
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

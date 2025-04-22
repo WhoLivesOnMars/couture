@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }} — Objets{% endblock %}
+
+{% block main %}
+
+    {% include '_subcategory_list.html.twig' %}
+
+    {% if products|length > 0 %}
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    <a href="{{ path('app_product_show', { id: product.id }) }}">
+                        <img src="{{ asset('uploads/' ~ product.image) }}" alt="{{ product.title }}">
+                    </a>
+                    <div class="info">
+                        <h3 class="info__title">{{ product.title }}</h3>
+                        <div class="info__description">
+                            <p class="info__subtitle">{{ product.subtitle }}</p>
+                            <p class="info__price">{{ product.price }} €</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-products-message">
+            Aucun objet disponible dans cette sous-catégorie.
+        </div>
+    {% endif %}
+
+{% endblock %}

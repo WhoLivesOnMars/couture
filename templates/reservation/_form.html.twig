@@ -1,0 +1,32 @@
+{{ form_start(form, {'attr': {'class': 'item-form'}}) }}
+
+<div class="form-group">
+    {{ form_label(form.name, 'Nom complet*') }}
+    {{ form_widget(form.name, {'attr': {'placeholder': 'Ex: Jeanne Moreau'}}) }}
+    {{ form_errors(form.name) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.email, 'Email*') }}
+    {{ form_widget(form.email, {'attr': {'placeholder': 'Ex: jeanne@mail.com'}}) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.phone, 'Téléphone*') }}
+    {{ form_widget(form.phone, {'attr': {'placeholder': 'Ex: 06 12 34 56 78'}}) }}
+    {{ form_errors(form.phone) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.commentaire, 'Commentaire') }}
+    {{ form_widget(form.commentaire, {'attr': {'rows': 4, 'placeholder': 'Précisez vos disponibilités ou questions...'}}) }}
+    {{ form_errors(form.commentaire) }}
+</div>
+
+<div class="form-footer">
+    <p class="required-fields">* Champs obligatoires</p>
+    <button type="submit" class="btn primary-button">{{ button_label|default('Réserver') }}</button>
+</div>
+
+{{ form_end(form) }}

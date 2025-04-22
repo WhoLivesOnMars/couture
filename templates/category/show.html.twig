@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }} — Objets{% endblock %}
+
+{% block main %}
+
+    {% include '_subcategory_list.html.twig' %}
+
+    <div class="subcategory-info">
+        <p>Cliquez sur une sous-catégorie pour découvrir les objets disponibles</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservations{% endblock %}
+
+{% block main %}
+    <div class="section-table">
+        <h1 class="page-title">Mes réservations</h1>
+
+        {% if reservations is empty %}
+            <p class="empty-message">Vous n'avez encore effectué aucune réservation.</p>
+        {% else %}
+            <table class="reservation-table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Objet</th>
+                    <th>Détails</th>
+                    <th>Prix</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td class="">{{ loop.index }}</td>
+                        <td class="product-cell">
+                            <img src="{{ asset('uploads/' ~ reservation.product.image) }}" alt="{{ reservation.product.title }}" class="product-thumb">
+                            {{ reservation.product.title }}
+                        </td>
+                        <td class="">{{ reservation.product.subtitle }}</td>
+                        <td class="">{{ reservation.product.price }} €</td>
+                        <td class="action-icons product-cell">
+                            <a href="{{ path('app_product_show', { id: reservation.product.id }) }}" title="Voir">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            {{ include('reservation/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

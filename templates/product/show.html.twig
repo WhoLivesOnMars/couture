@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.title }} — Détail du produit{% endblock %}
+
+{% block main %}
+    <div class="product-container">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="{{ asset('uploads/' ~ product.image) }}" alt="{{ product.title }}">
+            </div>
+            <div class="thumbnail-gallery">
+                <img src="{{ asset('uploads/' ~ product.image) }}" alt="{{ product.title }}" class="thumbnail">
+                <img src="{{ asset('uploads/' ~ product.image) }}" alt="{{ product.title }}" class="thumbnail">
+                <img src="{{ asset('uploads/' ~ product.image) }}" alt="{{ product.title }}" class="thumbnail">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-content">
+                <h1 class="product-title">{{ product.title }}</h1>
+                <p class="product-subtitle">{{ product.subtitle }}</p>
+                <p class="product-price">{{ product.price }} €</p>
+
+                <div class="product-description">
+                    {{ product.description }}
+                </div>
+
+                <div class="seller-info">
+                    <div class="seller-details">
+                        <p class="seller-name">{{ product.author }}</p>
+                        <div class="seller-rating">
+                            <span class="rating-text">note moyenne</span>
+                            <span class="star filled">★★★★★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                {% if is_granted('ROLE_VISITEUR') %}
+                    {% set isReservedByUser = false %}
+                    {% for reservation in product.reservations %}
+                        {% if reservation.user == app.user %}
+                            {% set isReservedByUser = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if isReservedByUser %}
+                        <button class="btn reserved-button" disabled>Déjà réservé</button>
+                    {% else %}
+                        <a href="{{ path('app_reservation_new', { id: product.id }) }}" class="btn contact-button">Réserver</a>
+                    {% endif %}
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') or (is_granted('ROLE_PRO') and product.user.id == app.user.id) %}
+                    <a href="{{ path('app_product_edit', { id: product.id }) }}" class="btn action-button edit-button" title="Modifier">Modifier</a>
+                    {{ include('product/_delete_form.html.twig') }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

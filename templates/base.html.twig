@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Bienvenue sur Couture!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_body.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_header.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_cards.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_product-detail.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_login.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_edit-form.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_reservations.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/_footer.css') }}">
+
+        {% block stylesheets %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            {% include '_header.html.twig' %}
+        </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer>
+            {% include '_footer.html.twig' %}
+        </footer>
+    </body>
+</html>
