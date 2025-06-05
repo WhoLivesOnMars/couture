@@ -3,14 +3,11 @@
 
 {% if is_homepage %}
     <section class="hero">
-        <header class="header">
-            <div class="logo">
-                <h1 class="logo__title">Couture</h1>
-                <span class="logo__subtitle">Tissus, création et passion</span>
-            </div>
-            <nav class="categories-nav">
-            </nav>
-        </header>
+        <div class="hero__content">
+            <h1 class="logo__title">Couture</h1>
+            <span class="logo__subtitle">Tissus, création et passion</span>
+            <img class="hero__image" src="/images/banner.png" alt="Image de machine à coudre"/>
+        </div>
     </section>
     <div class="menu">
         <nav class="main-nav">
@@ -26,7 +23,9 @@
             {% else %}
                 <a href="{{ path('app_login') }}" class="nav-link">Se connecter</a>
             {% endif %}
-            <a href="#" class="nav-link">À propos</a>
+            <a href="{{ path('app_category_index') }}" class="nav-link">
+                Catégories
+            </a>
         </nav>
     </div>
 {% else %}
@@ -34,33 +33,45 @@
         <div class="header-content">
             <a href="{{ path('app_home') }}" class="logo__link">Couture</a>
 
-            <nav class="secondary-header__main-nav">
-                <ul class="nav-list">
-                        <li>
-                            <a href="{{ path('app_category_index') }}" class="secondary-header__link">
-                                Catégories
-                            </a>
-                        </li>
-                </ul>
-            </nav>
-
-            <nav class="secondary-header__user-nav">
+            <nav class="secondary-header__user-nav desktop-nav">
                 <ul class="nav-list">
                     {% if app.user %}
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace administrateur</a>
+                            <li><a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace administrateur</a></li>
                         {% elseif is_granted('ROLE_PRO') %}
-                            <a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace professionnel</a>
+                            <li><a href="{{ path('app_admin_reservation') }}" class="secondary-header__link">Espace professionnel</a></li>
                         {% elseif is_granted('ROLE_VISITEUR') %}
-                            <a href="{{ path('app_reservation_index') }}" class="secondary-header__link">Espace personnel</a>
+                            <li><a href="{{ path('app_reservation_index') }}" class="secondary-header__link">Espace personnel</a></li>
                         {% endif %}
                         <li><a href="{{ path('app_logout') }}" class="secondary-header__link">Se déconnecter</a></li>
                     {% else %}
                         <li><a href="{{ path('app_login') }}" class="secondary-header__link">Se connecter</a></li>
                     {% endif %}
-                    <li><a href="#" class="secondary-header__link">À propos</a></li>
+                    <li><a href="{{ path('app_category_index') }}" class="secondary-header__link">Catégories</a></li>
                 </ul>
             </nav>
+
+            <button class="burger" id="burger-btn" aria-label="Menu">&#9776;</button>
+        </div>
+
+        {# OVERLAY MOBILE MENU #}
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-btn" id="close-btn" aria-label="Fermer">×</button>
+            <ul class="mobile-nav">
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('app_admin_reservation') }}">Espace administrateur</a></li>
+                    {% elseif is_granted('ROLE_PRO') %}
+                        <li><a href="{{ path('app_admin_reservation') }}">Espace professionnel</a></li>
+                    {% elseif is_granted('ROLE_VISITEUR') %}
+                        <li><a href="{{ path('app_reservation_index') }}">Espace personnel</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                {% endif %}
+                <li><a href="{{ path('app_category_index') }}">Catégories</a></li>
+            </ul>
         </div>
     </header>
 {% endif %}

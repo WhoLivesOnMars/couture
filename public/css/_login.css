@@ -1,6 +1,6 @@
 .login-container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 10rem auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -39,4 +39,51 @@
 
 .login-container .btn:hover {
     background-color: #e9c46a;
+}
+
+/* TABLETTE (768px – 1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .login-container {
+        max-width: 80%;
+        margin: 6rem auto;
+        padding: 1.5rem;
+    }
+
+    .login-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-container input {
+        padding: 0.8rem;
+    }
+
+    .login-container .btn {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+/* MOBILE (≤767px) */
+@media screen and (max-width: 767px) {
+    .login-container {
+        max-width: 90%;
+        margin: 4rem auto;
+        padding: 1rem;
+        box-shadow: none;
+        border: none;
+    }
+
+    .login-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .login-container input {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .login-container .btn {
+        font-size: 1rem;
+        padding: 0.9rem;
+    }
 }

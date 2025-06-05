@@ -34,8 +34,11 @@
             {% block main %}{% endblock %}
         </main>
 
-        <footer>
+        <footer class="footer">
             {% include '_footer.html.twig' %}
         </footer>
+
+        <script src="{{ asset('js/mobileMenu.js') }}"></script>
+        <script src="{{ asset('js/filter-toggle.js') }}"></script>
     </body>
 </html>

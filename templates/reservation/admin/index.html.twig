@@ -4,19 +4,25 @@
 
 {% block main %}
     <div class="button-row">
-        <a href="{{ path('app_product_new') }}" class="btn add-button">+ Ajouter un objet</a>
+        <a href="{{ path('app_product_new') }}" class="btn add-button add-desktop">+ Ajouter un objet</a>
+
+        <a href="{{ path('app_product_new') }}" class="btn add-button add-mobile" aria-label="Ajouter un objet">
+            <i class="fas fa-plus"></i>
+        </a>
         <a href="{{ path('app_product_userlist') }}" class="btn btn-secondary">Mes objets</a>
     </div>
+
     <div class="section-table">
         <h1 class="page-title">Réservations reçues</h1>
 
         {% if reservations is empty %}
             <p class="empty-message">Aucune réservation reçue pour vos objets.</p>
         {% else %}
+            {# TABLEAU pour desktop/tablette #}
             <table class="reservation-table">
                 <thead>
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Objet</th>
                     <th>Nom</th>
                     <th>Email</th>
@@ -43,6 +49,47 @@
                 {% endfor %}
                 </tbody>
             </table>
+
+            {# CARTES pour mobile #}
+            <div class="reservation-cards">
+                {% for reservation in reservations %}
+                    <div class="reservation-card">
+                        <p><strong>#{{ loop.index }}</strong></p>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Objet :</span>
+                            <a class="value product-link" href="{{ path('app_product_show', { id: reservation.product.id }) }}">
+                                {{ reservation.product.title }}
+                            </a>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Nom :</span>
+                            <span class="value">{{ reservation.name }}</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Email :</span>
+                            <span class="value">{{ reservation.email }}</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Téléphone :</span>
+                            <span class="value">{{ reservation.phone }}</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Date :</span>
+                            <span class="value">{{ reservation.dateReservation|date('d/m/Y H:i') }}</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Commentaire :</span>
+                            <span class="value">{{ reservation.commentaire|default('-') }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

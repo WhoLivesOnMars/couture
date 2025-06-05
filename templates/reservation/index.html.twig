@@ -9,26 +9,27 @@
         {% if reservations is empty %}
             <p class="empty-message">Vous n'avez encore effectué aucune réservation.</p>
         {% else %}
+            {# TABLEAU (affiché uniquement sur tablette / desktop) #}
             <table class="reservation-table">
                 <thead>
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Objet</th>
                     <th>Détails</th>
                     <th>Prix</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for reservation in reservations %}
                     <tr>
-                        <td class="">{{ loop.index }}</td>
+                        <td>{{ loop.index }}</td>
                         <td class="product-cell">
                             <img src="{{ asset('uploads/' ~ reservation.product.image) }}" alt="{{ reservation.product.title }}" class="product-thumb">
                             {{ reservation.product.title }}
                         </td>
-                        <td class="">{{ reservation.product.subtitle }}</td>
-                        <td class="">{{ reservation.product.price }} €</td>
+                        <td>{{ reservation.product.subtitle }}</td>
+                        <td>{{ reservation.product.price }} €</td>
                         <td class="action-icons product-cell">
                             <a href="{{ path('app_product_show', { id: reservation.product.id }) }}" title="Voir">
                                 <i class="fas fa-eye"></i>
@@ -39,6 +40,39 @@
                 {% endfor %}
                 </tbody>
             </table>
+
+            {# VERSION CARTE (affichée uniquement sur mobile) #}
+            <div class="reservation-cards">
+                {% for reservation in reservations %}
+                    <div class="reservation-card">
+                        <form method="post"
+                              action="{{ path('app_reservation_delete', { id: reservation.id }) }}"
+                              onsubmit="return confirm('Confirmer la suppression ?');"
+                              class="reservation-delete-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+                            <button type="submit" class="close-button" title="Supprimer">×</button>
+                        </form>
+
+                        <div class="reservation-card__row">
+                            <div class="value product-cell">
+                                <img src="{{ asset('uploads/' ~ reservation.product.image) }}"
+                                     alt="{{ reservation.product.title }}"
+                                     class="product-thumb">
+                                {{ reservation.product.title }}
+                            </div>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="value">{{ reservation.product.price }} €</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <a href="{{ path('app_product_show', { id: reservation.product.id }) }}"
+                               class="voir-button">Voir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

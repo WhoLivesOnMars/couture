@@ -96,3 +96,11 @@
 .required-fields {
     text-align: left;
 }
+
+/* MOBILE */
+@media screen and (max-width: 767px) {
+    .form-title {
+        line-height: 3rem;
+        text-align: left;
+    }
+}

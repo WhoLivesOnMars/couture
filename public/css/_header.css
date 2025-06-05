@@ -1,35 +1,54 @@
 .header {
     display: flex;
-    width: 90%;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .logo__title {
     font-family: 'Cairo Extrabold', sans-serif;
-    font-size: 12rem;
-    line-height: 1;
-    text-shadow: 6px 7px 4px rgba(0, 0, 0, 0.25);
+    font-size: 25rem;
     color: #e76f51;
+    text-shadow: 6px 7px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .logo__subtitle {
     font-size: 1.5rem;
     letter-spacing: 0.16em;
-    padding: 1rem;
     line-height: 1;
+    position: absolute;
+    top: 35%;
+    left: 5%;
 }
 
 .hero {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     width: 100%;
-    height: 650px;
-    background-image: url(../images/banner.png);
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: 40%;
+    min-height: 90vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hero__image {
+    width: 50%;
+    position: relative;
+    z-index: 2;
 }
 
 .secondary-header {
@@ -77,7 +96,7 @@
 }
 
 .menu {
-    height: 4rem;
+    min-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,7 +132,6 @@
 
 .secondary-header__user-nav {
     align-items: center;
-    padding-left: 1rem;
     border-left: 1px solid #fff;
     padding: 1rem 1rem;
 }
@@ -133,4 +151,163 @@
 
 .secondary-header__link:hover {
     text-decoration: underline;
+}
+
+.burger,
+.mobile-menu {
+    display: none;
+}
+
+.desktop-nav {
+    display: flex;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .logo__title {
+        font-size: 12rem;
+        bottom: 30%;
+    }
+
+    .logo__subtitle {
+        font-size: 1.2rem;
+        top: 40%;
+        left: 10%;
+    }
+
+    .hero__image {
+        width: 70%;
+    }
+
+    .main-nav {
+        width: 80%;
+    }
+
+    .nav-list {
+        gap: 1.5rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* MOBILE (≤767px) */
+@media screen and (max-width: 767px) {
+    .hero {
+        min-height: 78vh;
+    }
+
+    .hero__content {
+        position: static;
+        min-height: 65vh;
+        justify-content: space-between;
+    }
+
+    .logo__title {
+        position: static;
+        text-align: center;
+        font-size: 5rem;
+        width: 100%;
+        transform: none;
+    }
+
+    .logo__subtitle {
+        position: static;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 10rem;
+    }
+
+    .hero__image {
+        position: static;
+        width: 90%;
+    }
+
+    .menu {
+        min-height: 22vh;
+    }
+
+    .main-nav {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 2rem;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    .logo__link {
+        font-size: 2rem;
+        color: white;
+    }
+
+    .secondary-header {
+        padding: 0;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+        background: none;
+        font-size: 2rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #000;
+        z-index: 9999;
+        padding: 3rem 2rem;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 2.5rem;
+        color: white;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        cursor: pointer;
+    }
+
+    .mobile-nav {
+        list-style: none;
+        padding: 0;
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .mobile-nav a {
+        color: white;
+        font-size: 1.5rem;
+        text-decoration: none;
+    }
 }

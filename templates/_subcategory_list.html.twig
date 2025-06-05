@@ -2,12 +2,30 @@
     <a href="{{ path('app_category_index') }}" class="back-link">← Catégories</a>
 </div>
 
-<div class="section-table">
+<div class="section-subcategories">
     <h1>{{ category.name }}</h1>
 </div>
 
-<div class="subcategory-buttons">
-    {% for sub in subcategories %}
-        <a class="btn btn-sub" href="{{ path('app_subcategory_show', { id: sub.id }) }}">{{ sub.name }}</a>
-    {% endfor %}
+<div class="subcategory-filter-wrapper">
+    <button class="filter-toggle" id="filterToggle">
+        <i class="fas fa-filter"></i> Filtres
+    </button>
+
+    <div class="subcategory-overlay" id="subcategoryOverlay">
+        <button class="close-overlay" id="closeOverlay" aria-label="Fermer">×</button>
+        <div class="subcategory-list">
+            {% for sub in subcategories %}
+                <a class="subcategory-link" href="{{ path('app_subcategory_show', { id: sub.id }) }}">
+                    {{ sub.name }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="subcategory-buttons desktop-subcategories">
+        {% for sub in subcategories %}
+            <a class="btn btn-sub" href="{{ path('app_subcategory_show', { id: sub.id }) }}">{{ sub.name }}</a>
+        {% endfor %}
+    </div>
 </div>
+

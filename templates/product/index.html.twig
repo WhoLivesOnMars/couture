@@ -9,14 +9,15 @@
         {% if products is empty %}
             <p class="empty-message">Vous n'avez encore créé aucun objet.</p>
         {% else %}
+            {# TABLEAU pour desktop/tablette #}
             <table class="reservation-table">
                 <thead>
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Objet</th>
                     <th>Description</th>
                     <th>Prix</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +35,10 @@
                             <a href="{{ path('app_product_edit', { id: product.id }) }}" class="btn-edit" title="Modifier">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <form method="post" action="{{ path('app_product_delete', { id: product.id }) }}" onsubmit="return confirm('Confirmer la suppression ?');" style="display:inline-block;">
+                            <form method="post"
+                                  action="{{ path('app_product_delete', { id: product.id }) }}"
+                                  onsubmit="return confirm('Confirmer la suppression ?');"
+                                  style="display:inline-block;">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                                 <button type="submit" class="btn-icon" title="Supprimer">
                                     <i class="fa-solid fa-trash"></i>
@@ -45,6 +49,44 @@
                 {% endfor %}
                 </tbody>
             </table>
+
+            {# CARTES pour mobile #}
+            <div class="reservation-cards">
+                {% for product in products %}
+                    <div class="reservation-card">
+                        <form method="post"
+                              action="{{ path('app_product_delete', { id: product.id }) }}"
+                              onsubmit="return confirm('Confirmer la suppression ?');"
+                              class="reservation-delete-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                            <button type="submit" class="close-button" title="Supprimer">×</button>
+                        </form>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Objet :</span>
+                            <span class="value">
+                                <a class="product-link" href="{{ path('app_product_show', { id: product.id }) }}">
+                                    {{ product.title }}
+                                </a>
+                            </span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Description :</span>
+                            <span class="value">{{ product.description|slice(0, 80) ~ '...' }}</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <span class="label">Prix :</span>
+                            <span class="value">{{ product.price }} €</span>
+                        </div>
+
+                        <div class="reservation-card__row">
+                            <a href="{{ path('app_product_edit', { id: product.id }) }}" class="voir-button">Modifier</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}
