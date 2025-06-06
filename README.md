@@ -23,7 +23,7 @@
 - CSS3  
 - Hosted with Plesk
 
-## 🧪 Demo accounts (optional)
+## 🧪 Demo accounts
 
 | Role          | Email                | Password       |
 |---------------|----------------------|----------------|
