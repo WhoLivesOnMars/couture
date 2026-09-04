@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libicu-dev \
     libzip-dev \
+    libsqlite3-dev \
     && docker-php-ext-install \
         intl \
         pdo_sqlite \
