@@ -1,29 +1,29 @@
-# 🧵 Couture — Object Reservation Platform for Sewing
+# Couture — Object Reservation Platform for Sewing
 
 **Couture** is a web platform built with **Symfony 6** that allows users to reserve sewing-related items (machines, accessories, etc.). The application supports different user roles (administrator, professional, visitor) and offers responsive design for both desktop and mobile use.
 
-🔗 [Live demo](https://couture-info4.khanina.etu.mmi-unistra.fr)
+🔗 [Live demo](https://couture-nkq8.onrender.com/)
 
-## 🚀 Features
+## Features
 
-- 🔐 Authentication system with role-based access (`ROLE_ADMIN`, `ROLE_PRO`, `ROLE_VISITEUR`)
-- 📦 Add and manage reservable items
-- 📅 Reservation system with confirmation form
-- 📁 Admin/pro dashboard to view and manage items and reservations
-- 📱 Responsive UI with mobile-specific cards and actions
-- 🧭 Filters by category and subcategory
-- 🖼️ Image upload for each item
+- Authentication system with role-based access (`ROLE_ADMIN`, `ROLE_PRO`, `ROLE_VISITEUR`)
+- Add and manage reservable items
+- Reservation system with confirmation form
+- Admin/pro dashboard to view and manage items and reservations
+- Responsive UI with mobile-specific cards and actions
+- Filters by category and subcategory
+- Image upload for each item
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - PHP 8.2.12  
 - Symfony 6  
 - Doctrine ORM (SQLite)  
 - Twig  
 - CSS3  
-- Hosted with Plesk
+- Hosted with Render
 
-## 🧪 Demo accounts
+## Demo accounts
 
 | Role          | Email                | Password       |
 |---------------|----------------------|----------------|
@@ -33,7 +33,7 @@
 
 > These accounts are created using Fixtures.
 
-## 📦 Deployment
+## Deployment
 
-Deployed on Plesk and available here:  
-➡️ [https://couture-info4.khanina.etu.mmi-unistra.fr](https://couture-info4.khanina.etu.mmi-unistra.fr)
+Deployed on Render and available here: 
+➡️ [https://couture-nkq8.onrender.com/](https://couture-nkq8.onrender.com/)
